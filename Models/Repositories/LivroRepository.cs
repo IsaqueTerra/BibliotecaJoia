@@ -1,6 +1,7 @@
 ﻿using BibliotecaJoia.Models.Contracts.Repositories;
 using BibliotecaJoia.Models.Dtos;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BibliotecaJoia.Models.Repositories
 {
@@ -8,7 +9,10 @@ namespace BibliotecaJoia.Models.Repositories
     {
         public List<LivroDto> Listar()
         {
-            throw new System.NotImplementedException();
+            var livros = ContextDataFake.Livros;
+            return livros
+                .OrderBy(p => p.Nome)
+                .ToList();
         }
     }
 }
