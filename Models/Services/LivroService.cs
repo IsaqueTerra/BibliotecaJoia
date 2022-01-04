@@ -13,7 +13,19 @@ namespace BibliotecaJoia.Models.Services
         public LivroService(ILivroRepository livroRepository)
         {
             _livroRepository = livroRepository;
-        }        
+        }
+
+        public void Cadastrar(LivroDto livro)
+        {
+            try
+            {
+                 _livroRepository.Cadastrar(livro);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public List<LivroDto> Listar()
         {
