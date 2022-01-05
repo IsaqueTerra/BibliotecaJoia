@@ -52,5 +52,36 @@ namespace BibliotecaJoia.Controllers
             }
 
         }
+
+        public IActionResult Edit(string? id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return NotFound();
+
+
+            var livro = _livroService.PesquisarPorId(id);
+            if(livro == null)
+                return NotFound();
+
+            return View(livro);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit([Bind("Id, Nome, Autor, Editor")]LivroDto livro)
+        {
+            if(string.IsNullOrEmpty(livro.Id))
+                return NotFound();
+            try
+            {
+                _livroService.Atualizar(livro);
+                return RedirectToAction("List");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }           
+        }
     }
 }

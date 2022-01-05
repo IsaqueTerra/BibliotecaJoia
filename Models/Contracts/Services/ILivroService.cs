@@ -8,5 +8,8 @@ namespace BibliotecaJoia.Models.Contracts.Services
         void Cadastrar(LivroDto livro);
         List<LivroDto> Listar();
 
+        LivroDto PesquisarPorId(string id);
+
+        void Atualizar(LivroDto livro);
     }
 }
