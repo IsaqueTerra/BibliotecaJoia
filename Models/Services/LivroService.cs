@@ -39,6 +39,19 @@ namespace BibliotecaJoia.Models.Services
                 throw ex;
             }
         }
+        public void Excluir(string id)
+        {
+            try
+            {
+                _livroRepository.Excluir(id);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
 
         public List<LivroDto> Listar()
         {

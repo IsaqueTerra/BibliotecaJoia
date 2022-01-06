@@ -109,5 +109,12 @@ namespace BibliotecaJoia.Controllers
 
             return View(livro);
         }
+
+        [HttpPost]
+        public IActionResult Delete([Bind("Id, Nome, Autor, Editor")] LivroDto livro)
+        {
+            _livroService.Excluir(livro.Id);
+            return RedirectToAction("List");
+        }
     }
 }
